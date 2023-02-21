@@ -87,3 +87,54 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 	}
 }
 
+
+/*
+@Bean
+protected ResourceServerConfiguration adminResources() {
+    ResourceServerConfiguration resource = new ResourceServerConfiguration() {
+
+        // Switch off the Spring Boot @Autowired configurers
+        public void setConfigurers(List<ResourceServerConfigurer> configurers) {
+            super.setConfigurers(configurers);
+        }
+    };
+    resource.setConfigurers(Arrays.<ResourceServerConfigurer>asList(new ResourceServerConfigurerAdapter() {
+
+        @Override
+        public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
+            resources.resourceId("oauth2/admin");
+        }
+
+        @Override
+        public void configure(HttpSecurity http) throws Exception {
+            http.antMatcher("/admin/**").authorizeRequests().anyRequest().access("#oauth2.hasScope('read')");
+        }
+    }));
+    resource.setOrder(3);
+    return resource;
+}*/
+
+/*@Bean
+protected ResourceServerConfiguration otherResources() {
+    ResourceServerConfiguration resource = new ResourceServerConfiguration() {
+
+        // Switch off the Spring Boot @Autowired configurers
+        public void setConfigurers(List<ResourceServerConfigurer> configurers) {
+            super.setConfigurers(configurers);
+        }
+    };
+    resource.setConfigurers(Arrays.<ResourceServerConfigurer>asList(new ResourceServerConfigurerAdapter() {
+
+        @Override
+        public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
+            resources.resourceId("oauth2/other");
+        }
+
+        @Override
+        public void configure(HttpSecurity http) throws Exception {
+            http.authorizeRequests().anyRequest().access("#oauth2.hasScope('trust')");
+        }
+    }));
+    resource.setOrder(4);
+    return resource;
+}*/
